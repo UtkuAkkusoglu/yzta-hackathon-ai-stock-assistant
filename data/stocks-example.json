@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Siyah Gömlek",
+    "size": "L",
+    "stock_count": 0,
+    "price": 450
+  },
+  {
+    "id": 2,
+    "name": "Mavi Jean",
+    "size": "42",
+    "stock_count": 5,
+    "price": 850
+  },
+  {
+    "id": 3,
+    "name": "Deri Bot",
+    "size": "44",
+    "stock_count": 0,
+    "price": 1200
+  }
+]
