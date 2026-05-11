@@ -58,3 +58,15 @@ def check_stock_status(product_name: str, size: str):
         if s["name"].lower() == product_name.lower() and s["size"].lower() == size.lower():
             return s["stock"]
     return -1 # Ürün hiç bulunamadıysa
+
+def get_all_stock_names():
+    """stok listesindeki tüm ürün isimlerini döndürür"""
+    try:
+        # stocks.json dosyasının doğru yolunu kontrol et (genelde 'data/stocks.json' olur)
+        with open("data/stoklar.json", "r", encoding="utf-8") as f:
+            stocks = json.load(f)
+            # JSON yapın liste içindeki objelerse (örn: [{"name": "Ürün1", ...}])
+            return [stock.get("name") for stock in stocks if stock.get("name")]
+    except Exception as e:
+        print(f"Veri okuma hatası: {e}")
+        return []

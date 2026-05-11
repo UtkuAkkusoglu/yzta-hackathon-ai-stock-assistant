@@ -2,7 +2,8 @@ import uvicorn
 import threading
 from fastapi import FastAPI, HTTPException
 from src.bot_service import run_bot, send_stock_alert
-from src import data_manager 
+from src import data_manager
+
 
 app = FastAPI(title="Stock Assistant")
 
@@ -67,3 +68,5 @@ async def on_startup():
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+
