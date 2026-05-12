@@ -135,7 +135,7 @@
         "id": 23,
         "name": "Kırmızı Oversize Hoodie",
         "size": "L",
-        "stock": 0
+        "stock": 1
     },
     {
         "id": 24,
@@ -174,8 +174,8 @@
         "stock": 1
     },
     {
-        "id": 31,
-        "name": "Mavi Gömlek (Slim Fit)",
+        "id": 32,
+        "name": "Lacivert Ceket",
         "size": "M",
         "stock": 5
     }

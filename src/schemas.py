@@ -18,5 +18,5 @@ class ProductResponse(ProductBase):
 class DemandResponse(BaseModel):
     chat_id: int
     product_name: str
-    size: Optional[str]
+    size: Optional[str] = "belirtilmedi" # None gelirse çökmesin diye default değer
     status: str
