@@ -159,7 +159,7 @@
         "id": 27,
         "name": "Bej Trençkot",
         "size": "40",
-        "stock": 0
+        "stock": 1
     },
     {
         "id": 28,
@@ -168,15 +168,15 @@
         "stock": 5
     },
     {
-        "id": 29,
-        "name": "Mavi Gömlek (Slim Fit)",
-        "size": "M",
-        "stock": 0
-    },
-    {
         "id": 30,
         "name": "Mavi Gömlek (Slim Fit)",
         "size": "L",
-        "stock": 0
+        "stock": 1
+    },
+    {
+        "id": 31,
+        "name": "Mavi Gömlek (Slim Fit)",
+        "size": "M",
+        "stock": 5
     }
 ]

@@ -1,62 +1,14 @@
 [
     {
         "chat_id": 6018650119,
-        "product_name": "40 numara beyaz ayakkabı",
-        "size": "Belirtilmedi",
-        "status": "waiting"
-    },
-    {
-        "chat_id": 6018650119,
-        "product_name": "Beyaz Adidas Stan Smith",
-        "size": "38",
+        "product_name": "Mavi Gömlek (Slim Fit)",
+        "size": "L",
         "status": "completed"
     },
     {
         "chat_id": 6018650119,
-        "product_name": "Beyaz Adidas Stan Smith",
-        "size": "38",
-        "status": "completed"
-    },
-    {
-        "chat_id": 6018650119,
-        "product_name": "Beyaz Adidas Stan Smith",
-        "size": "38",
-        "status": "completed"
-    },
-    {
-        "chat_id": 6018650119,
-        "product_name": "Beyaz Adidas Stan Smith",
-        "size": "38",
-        "status": "completed"
-    },
-    {
-        "chat_id": 8659840663,
-        "product_name": "Selam, 42 numara siyah Nike spor ayakkabı geldiğinde bana haber verir misin?",
-        "size": null,
-        "status": "waiting"
-    },
-    {
-        "chat_id": 8659840663,
-        "product_name": "Selam, 42 numara siyah Nike spor ayakkabı geldiğinde bana haber verir misin?",
-        "size": null,
-        "status": "waiting"
-    },
-    {
-        "chat_id": 8659840663,
-        "product_name": "siyah Nike spor ayakkabı",
-        "size": "42",
-        "status": "waiting"
-    },
-    {
-        "chat_id": 8659840663,
-        "product_name": "Nike Air Max",
-        "size": "43",
-        "status": "waiting"
-    },
-    {
-        "chat_id": 8659840663,
-        "product_name": "Mavi Levi's 501 Jean",
-        "size": "34/32",
+        "product_name": "Mavi Gömlek (Slim Fit)",
+        "size": "M",
         "status": "completed"
     }
 ]
