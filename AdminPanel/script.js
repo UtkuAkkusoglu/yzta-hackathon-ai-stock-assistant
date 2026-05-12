@@ -1,9 +1,10 @@
 // 1. Genel Mimari ve Erişim Bilgileri
 const API_BASE_URL = "http://localhost:8000";
 
-// Sayfa yüklendiğinde stokları getir
+// Sayfa yüklendiğinde stokları ve talepleri getir
 document.addEventListener('DOMContentLoaded', () => {
     fetchStocks();
+    fetchDemands(); // Sayfa açılır açılmaz talepleri de çekiyoruz
 });
 
 // A. Stok Listesini Getirme (GET /admin/stocks)
@@ -56,7 +57,6 @@ document.getElementById('productForm').onsubmit = async (e) => {
         stock: parseInt(document.getElementById('stock').value)
     };
 
-    // Yükleme Durumu: Butonu pasif yap
     submitBtn.disabled = true;
     submitBtn.innerText = "Ekleniyor...";
 
@@ -89,7 +89,7 @@ async function updateStock(productId) {
     const newCount = inputField.value;
     const btn = event.target;
 
-    btn.disabled = true; // Yükleme Durumu
+    btn.disabled = true;
 
     try {
         const response = await fetch(`${API_BASE_URL}/admin/stocks/update/${productId}`, {
@@ -101,9 +101,9 @@ async function updateStock(productId) {
         const result = await response.json();
 
         if (response.ok) {
-            // Bildirim gönderilen kişi sayısını göster
             showFeedback(`Stok güncellendi! ${result.notifications_sent} kişiye Telegram bildirimi gitti.`, "success");
             fetchStocks();
+            fetchDemands(); // Stok güncellenince talepler de azalmış olabilir, listeyi tazele
         } else {
             showFeedback("Hata: Ürün bulunamadı veya geçersiz veri (404/422).", "error");
         }
@@ -114,7 +114,41 @@ async function updateStock(productId) {
     }
 }
 
-// D. Ürün Silme (DELETE /admin/stocks/delete/{id})
+// D. Müşteri Taleplerini Getirme
+async function fetchDemands() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/admin/demands`);
+        if (!response.ok) throw new Error("Talepler alınamadı");
+
+        const demandData = await response.json();
+        renderDemands(demandData);
+    } catch (error) {
+        console.error("Talepler çekilirken hata oluştu:", error);
+    }
+}
+
+function renderDemands(demandData) {
+    const list = document.getElementById('demand-list');
+    list.innerHTML = '';
+
+    if (!demandData || demandData.length === 0) {
+        list.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:20px;">Bekleyen talep bulunmuyor.</td></tr>';
+        return;
+    }
+
+    demandData.forEach(d => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td style="color: #666; font-size: 12px;">${d.chat_id || 'Bilinmiyor'}</td>
+            <td>${d.product_name}</td>
+            <td><span class="badge-size">${d.size || '-'}</span></td> <!-- Beden bilgisi burada -->
+            <td><span style="color: #ff4d4d; font-weight:600;">Beklemede</span></td>
+        `;
+        list.appendChild(tr);
+    });
+}
+
+// E. Ürün Silme (DELETE /admin/stocks/delete/{id})
 async function deleteProduct(productId) {
     if (!confirm("Bu ürünü silmek istediğinize emin misiniz?")) return;
 
@@ -141,17 +175,19 @@ function updateStats(stocks) {
 }
 
 function showFeedback(message, type) {
-    // Hata yönetimi için görsel geri bildirim
     alert(message);
 }
 
 function openModal() { document.getElementById('productModal').style.display = 'flex'; }
 function closeModal() { document.getElementById('productModal').style.display = 'none'; }
 
-// Sekme geçişleri için (Talepler sekmesi statik kalabilir veya API'ye bağlanabilir)
 function showTab(tabName) {
     document.querySelectorAll('.tab-content').forEach(t => t.style.display = 'none');
     document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
     document.getElementById(tabName + '-sekmesi').style.display = 'block';
     document.getElementById('nav-' + tabName).classList.add('active');
+
+    if (tabName === 'talepler') {
+        fetchDemands(); // Sekmeye tıklandığında veriyi tazele
+    }
 }

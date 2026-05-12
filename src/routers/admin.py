@@ -50,3 +50,16 @@ async def delete_product(product_id: int):
     if not success:
         raise HTTPException(status_code=404, detail="Ürün silinemedi veya bulunamadı")
     return {"status": "success", "message": f"ID: {product_id} olan ürün başarıyla silindi"}
+
+
+@router.get("/demands")
+async def get_demands():
+    try:
+        import json, os
+        file_path = os.path.join("data", "talepler.json")
+        if not os.path.exists(file_path): return []
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data
+    except Exception:
+        return []
