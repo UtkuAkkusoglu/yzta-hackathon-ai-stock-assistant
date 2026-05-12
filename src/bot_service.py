@@ -12,7 +12,6 @@ load_dotenv()
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
-
 # --- KOMUTLAR (Start & Help) ---
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     help_text = (
@@ -91,12 +90,16 @@ async def send_stock_alert(chat_id: int, product_name: str, size: str):
         return False
 
 
-def run_bot():  # async kelimesini sildik
+def run_bot():
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_message))
 
-    print("Telegram Bot AI Destekli Olarak Çalışıyor...")
-    app.run_polling()  # await kelimesi yok
+    print("Telegram Bot AI Destekli ve Güvenli Modda Çalışıyor...")
+    # Sinyal ve Loop ayarlarını geri getirdik
+    app.run_polling(close_loop=False, stop_signals=False)
 

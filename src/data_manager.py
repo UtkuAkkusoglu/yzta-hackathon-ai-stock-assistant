@@ -1,6 +1,5 @@
 import json
 import os
-from src import data_manager
 
 STOCKS_FILE = "data/stoklar.json"
 DEMANDS_FILE = "data/talepler.json"
@@ -53,16 +52,20 @@ def add_demand(chat_id: int, product_name: str, size: str):
 def check_stock_status(product_name: str, size: str):
     """Ürünün stokta olup olmadığını kontrol eder."""
     stocks = get_all_stocks()
+    # size None gelirse boş stringe çevirelim ki .lower() çökmesin
+    safe_size = str(size).lower() if size else "belirtilmedi"
     for s in stocks:
+        s_name = s.get("name", "").lower()
+        s_size = str(s.get("size", "")).lower()
+        
         # İsim ve beden eşleşiyor mu bakıyoruz (Case insensitive - büyük/küçük harf duyarsız)
-        if s["name"].lower() == product_name.lower() and s["size"].lower() == size.lower():
+        if s_name == product_name.lower() and s_size == safe_size:
             return s["stock"]
     return -1 # Ürün hiç bulunamadıysa
 
 def get_all_stock_names():
     """stok listesindeki tüm ürün isimlerini döndürür"""
     try:
-        # stocks.json dosyasının doğru yolunu kontrol et (genelde 'data/stocks.json' olur)
         with open("data/stoklar.json", "r", encoding="utf-8") as f:
             stocks = json.load(f)
             # JSON yapın liste içindeki objelerse (örn: [{"name": "Ürün1", ...}])
