@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Assistant | KOBİ Yönetim Paneli</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Stock Assistant<span>Admin</span></div>
+        <nav>
+            <a href="#" id="nav-stok" class="active" onclick="showTab('stok')">📦 Stok Yönetimi</a>
+            <a href="#" id="nav-talepler" onclick="showTab('talepler')">📈 Müşteri Talepleri</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <!-- 1. SEKME: STOK YÖNETİMİ -->
+        <section id="stok-sekmesi" class="tab-content">
+            <header>
+                <h2>Stok Kontrol Paneli</h2>
+                <button class="btn-primary" onclick="openModal()">+ Yeni Ürün Ekle</button>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="label">Toplam Ürün Türü</span>
+                    <span class="value" id="total-products">0</span>
+                </div>
+                <div class="stat-card warning">
+                    <span class="label">Kritik Stok (0)</span>
+                    <span class="value" id="low-stock">0</span>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ürün Adı</th>
+                            <th>Beden</th>
+                            <th>Stok Güncelleme</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-list">
+                        <!-- script.js burayı dolduracak -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 2. SEKME: TALEPLER -->
+        <section id="talepler-sekmesi" class="tab-content" style="display:none;">
+            <header>
+                <h2>Müşteri Talepleri</h2>
+                <p>Telegram üzerinden gelen stok bildirim istekleri</p>
+            </header>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Bekleyen Kişi</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody id="demand-list"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Ürün Ekleme Modalı -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <h3>Yeni Ürün Ekle</h3>
+            <form id="productForm">
+                <input type="text" id="name" placeholder="Ürün Adı (Örn: Nike Air Max)" required>
+                <input type="text" id="size" placeholder="Beden (Örn: 42 veya L)" required>
+                <input type="number" id="stock" placeholder="Başlangıç Stoğu" required>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">İptal</button>
+                    <button type="submit" class="btn-primary">Kaydet ve Bildirim Gönder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
