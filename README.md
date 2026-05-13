@@ -94,7 +94,7 @@ Panel yayına girdikten sonra tarayıcınızdan [`http://localhost:5500`](http:/
 Sistemi başlattıktan sonra müşteri deneyimini test etmek için:
 
 1. Telegram uygulamasını açın.
-2. Slaytta belirtilen **Bot Kullanıcı Adı** bilgisini arama kısmına yazarak bota ulaşın.
+2. Pitch Deck'te belirtilen **Bot Kullanıcı Adı** bilgisini arama kısmına yazarak bota ulaşın.
 3. `/start` komutu ile etkileşimi başlatın.
 4. Bota doğal dille talebinizi iletin *(Örn: "Mavi gömlek 38 beden gelince haber ver")*.
 5. Admin panelinden ilgili ürünün stoğunu güncellediğinizde, botun size AI tarafından oluşturulmuş özel bildirimi gönderdiğini göreceksiniz.
