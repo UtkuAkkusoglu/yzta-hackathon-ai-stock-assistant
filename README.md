@@ -7,7 +7,7 @@ Bu proje, KOBİ'lerin stok yönetimini dijitalleştiren ve stokta olmayan ürün
 
 ## 🚀 Öne Çıkan Özellikler
 
-- **Akıllı Eşleştirme:** Kullanıcının doğal dil ile yazdığı talepleri *(Örn: "Nayk 42 numara siyah gelsin")* stok listesiyle semantik olarak eşleştirir.
+- **Akıllı Eşleştirme:** Kullanıcının doğal dil ile yazdığı talepleri *(Örn: "M beden lacivert polo tişört gelince haber verir misin")* stok listesiyle semantik olarak eşleştirir.
 - **AI Bildirim Motoru:** Stok güncellendiğinde, bekleyen kullanıcılara her seferinde farklı, samimi ve heyecan verici mesajlar oluşturur.
 - **KOBİ Yönetim Paneli:** Stok ekleme, silme ve güncelleme işlemlerinin yapılabildiği modern bir dashboard.
 - **Talep Takip Sistemi:** Hangi ürüne ne kadar talep olduğunu analiz ederek KOBİ'ye stok planlama verisi sunar.
