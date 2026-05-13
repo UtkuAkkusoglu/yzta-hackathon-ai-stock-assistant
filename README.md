@@ -44,12 +44,12 @@ pip install -r requirements.txt
 
 ### 3. Yapılandırma (Environment Variables)
 
-Projenin çalışması için gerekli olan **Gemini API Key**, **Telegram Bot Token** ve **Bot Username** bilgileri, güvenlik protokolleri gereği repo içerisinde paylaşılmamıştır.
+Projenin çalışması için gerekli olan **Gemini API Key**, **Telegram Bot Token** ve **Bot Kullanıcı Adı** bilgileri, güvenlik protokolleri gereği repo içerisinde paylaşılmamıştır.
 
-> Değerlendirme kolaylığı açısından bu anahtarlar **Pitch Deck (Sunum Dosyası)** içerisinde paylaşılmıştır.
+> Değerlendirme kolaylığı açısından bu anahtarlar **Pitch Deck** içerisinde son sayfada paylaşılmıştır.
 
-1. Ana dizinde .env dosyası oluşturun.
-2. Slaytta verilen GEMINI_API_KEY ve TELEGRAM_BOT_TOKEN bilgilerini .env dosyasına yapıştırın.
+1. Ana dizinde `.env` dosyası oluşturun.
+2. Slaytta verilen `GEMINI_API_KEY` ve `TELEGRAM_BOT_TOKEN` bilgilerini `.env` dosyasına yapıştırın.
 
 ### 4. Sistemi Başlatın
 
@@ -89,13 +89,25 @@ Panel yayına girdikten sonra tarayıcınızdan [`http://localhost:5500`](http:/
 
 ---
 
+## 🤖 Telegram Botu Kullanımı
+
+Sistemi başlattıktan sonra müşteri deneyimini test etmek için:
+
+1. Telegram uygulamasını açın.
+2. Slaytta belirtilen **Bot Kullanıcı Adı** bilgisini arama kısmına yazarak bota ulaşın.
+3. `/start` komutu ile etkileşimi başlatın.
+4. Bota doğal dille talebinizi iletin *(Örn: "Mavi gömlek 38 beden gelince haber ver")*.
+5. Admin panelinden ilgili ürünün stoğunu güncellediğinizde, botun size AI tarafından oluşturulmuş özel bildirimi gönderdiğini göreceksiniz.
+
+---
+
 ## 🏗️ Proje Yapısı
 
 ```
 .
 ├── main.py               # Uygulama giriş noktası
-├── config.py            # Yapılandırma ve Environment (.env) yönetimi
-├── schemas.py           # Pydantic veri modelleri ve doğrulama (Validation)
+├── config.py             # Yapılandırma ve Environment (.env) yönetimi
+├── schemas.py            # Pydantic veri modelleri ve doğrulama (Validation)
 ├── requirements.txt      # Python bağımlılıkları
 ├── src/                  # Backend mantığı, API router'ları ve AI entegrasyon servisleri
 ├── AdminPanel/           # KOBİ'lerin stok yönettiği frontend arayüzü (HTML/JS/CSS)
